@@ -70,3 +70,7 @@ function addEventListeners() {
         })
     })  
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    setPhone();
+})

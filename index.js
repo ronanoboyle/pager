@@ -54,22 +54,25 @@ function resetPhoneWindowEl() {
 
 // creates phone buttons from an array, adding ids.
 function setPhone() {
-    for(let i = 0; i < phoneDigits.length; i++){
-    phoneDigitsEl.innerHTML += `
-                                <button id="digit_${i}">${phoneDigits[i]}</button>
-                                `                          
+    for (let i = 0; i < phoneDigits.length; i++){
+    const button = document.createElement("button")
+    button.id = `digit_${i}`
+    button.textContent = phoneDigits[i];
+    button.addEventListener("click", function() {
+        phoneWindowEl.textContent += phoneDigits[i];
+    });
+    phoneDigitsEl.appendChild(button);
     }
-    addEventListeners()
 }
 
-// adds event listeners to each of the phone buttons
-function addEventListeners() {
-    phoneDigits.forEach(function(digit, index) {
-        document.querySelector(`#digit_${index}`).addEventListener("click", function() {
-            phoneWindowEl.textContent += `${phoneDigits[index]}`
-        })
-    })  
-}
+// // adds event listeners to each of the phone buttons
+// function addEventListeners() {
+//     phoneDigits.forEach(function(digit, index) {
+//         document.querySelector(`#digit_${index}`).addEventListener("click", function() {
+//             phoneWindowEl.textContent += `${phoneDigits[index]}`
+//         })
+//     })  
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     setPhone();
